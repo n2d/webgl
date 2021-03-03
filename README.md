@@ -1,8 +1,8 @@
 # webgl
-change from https://godoc.org/github.com/gopherjs/webgl support "syscall/js"
 [![GoDoc](https://godoc.org/github.com/gopherjs/webgl?status.svg)](https://godoc.org/github.com/gopherjs/webgl)
-[![Go Report Card](https://goreportcard.com/badge/github.com/gopherjs/webgl)](https://goreportcard.com/report/github.com/gopherjs/webgl)
+[![Go Report Card](https://goreportcard.com/badge/github.com/n2d/webgl)](https://goreportcard.com/report/github.com/n2d/webgl)
 
+change from https://godoc.org/github.com/gopherjs/webgl support "syscall/js"
 
 ## Example
 
