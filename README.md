@@ -1,9 +1,8 @@
 # webgl
-
+change from https://godoc.org/github.com/gopherjs/webgl support "syscall/js"
 [![GoDoc](https://godoc.org/github.com/gopherjs/webgl?status.svg)](https://godoc.org/github.com/gopherjs/webgl)
 [![Go Report Card](https://goreportcard.com/badge/github.com/gopherjs/webgl)](https://goreportcard.com/report/github.com/gopherjs/webgl)
 
-[GopherJS](https://github.com/gopherjs/gopherjs) bindings for [WebGL 1.0](https://www.khronos.org/registry/webgl/specs/latest/1.0/) context.
 
 ## Example
 
@@ -15,24 +14,23 @@ webgl_example.go:
 package main
 
 import (
-	"github.com/gopherjs/gopherjs/js"
+	"syscall/js"
 	"github.com/gopherjs/webgl"
 )
 
 func main() {
-	document := js.Global.Get("document")
-	canvas := document.Call("createElement", "canvas")
-	document.Get("body").Call("appendChild", canvas)
+	var canvas js.Value = js.
+		Global().
+		Get("document").
+		Call("getElementById", "canvas")
 
-	attrs := webgl.DefaultAttributes()
-	attrs.Alpha = false
 
-	gl, err := webgl.NewContext(canvas, attrs)
-	if err != nil {
-		js.Global.Call("alert", "Error: "+err.Error())
-	}
+	canvas.Set("height", 600)
+	canvas.Set("width", 800)
 
-	gl.ClearColor(0.8, 0.3, 0.01, 1)
+	gl, _ := webgl.NewContext(canvas)
+
+	gl.ClearColor(1, 0, 0, 1)
 	gl.Clear(gl.COLOR_BUFFER_BIT)
 }
 ```
@@ -40,7 +38,7 @@ func main() {
 webgl_example.html:
 
 ```html
-<html><body><script src="webgl_example.js"></script></body></html>
+<html><body><script src="webgl_example.js"></script><canvas id='canvas'></canvas></br></body></html>
 ```
 
 To produce `webgl_example.js` file, run `gopherjs build webgl_example.go`.
