@@ -15,7 +15,7 @@ package main
 
 import (
 	"syscall/js"
-	"github.com/gopherjs/webgl"
+	"github.com/n2d/webgl"
 )
 
 func main() {
